@@ -19,13 +19,15 @@ class OCRApp:
         pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
         # UI elements
+        self.scrollbar = tk.Scrollbar(self.master, width=20)
         self.image_label = tk.Label(self.master)
-        self.text_display = tk.Text(self.master, wrap="word", height=10, width=50)
+        self.text_display = tk.Text(self.master, wrap="word", height=50, width=120, yscrollcommand=self.scrollbar.set)
+        self.scrollbar.config(command=self.text_display.yview)
         self.select_image_button = tk.Button(self.master, text="Select Image", command=self.select_image_ocr)
         self.start_web_ocr_button = tk.Button(self.master, text="Start Web scrape", command=self.start_web_ocr)
-        self.summary_button = tk.Button(self.master, text="Print", command=self.summarize_session)
         self.url_entry = tk.Entry(self.master, width=40)
         self.delete_button = tk.Button(self.master, text="Delete URL", command=self.delete_url)
+        
 
         # UI layout
         self.image_label.pack(pady=10)
@@ -33,8 +35,8 @@ class OCRApp:
         self.url_entry.pack(pady=5)
         self.start_web_ocr_button.pack(pady=5)
         self.delete_button.pack(pady=5)
-        self.text_display.pack(pady=10)
-        self.summary_button.pack(pady=5)
+        self.text_display.pack(side=tk.LEFT, pady=10)
+        self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
         # Session
         self.session_text = ""
@@ -100,11 +102,6 @@ class OCRApp:
         img = ImageTk.PhotoImage(img)
         self.image_label.configure(image=img)
         self.image_label.image = img
-
-    def summarize_session(self):
-        print("Session Summary:")
-        print(self.session_text)
-
     def delete_url(self):
         self.url_entry.delete(0, tk.END)
 
