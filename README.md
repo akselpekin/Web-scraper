@@ -1,4 +1,3 @@
-```markdown
 # Web Scraper
 
 This is a simple web scraping application built with Python and Tkinter. 
@@ -34,6 +33,6 @@ python web_scrape.py
 - BeautifulSoup4
 
 ## License
-
+```bash
 This project is licensed under the terms of the MIT license.
 ```
