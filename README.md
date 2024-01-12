@@ -1,7 +1,8 @@
 ```markdown
 # Web Scraper
 
-This is a simple web scraping application built with Python and Tkinter. It allows you to scrape text content from a webpage and display it in a text box.
+This is a simple web scraping application built with Python and Tkinter. 
+It allows you to scrape text content from a webpage and display it in a text box.
 
 ## Installation
 
